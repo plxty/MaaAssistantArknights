@@ -27,7 +27,7 @@ namespace MaaWpfGui.Utilities
                     buffer ??= new char[65536];
                     fixed (char* ptr = buffer)
                     {
-                        if (PInvoke.GetModuleFileName(hmod, ptr, 65536) > 0)
+                        if (PInvoke.GetModuleFileName((Windows.Win32.Foundation.HMODULE)hmod.DangerousGetHandle(), ptr, 65536) > 0)
                         {
                             result.Add(new string(ptr));
                         }
